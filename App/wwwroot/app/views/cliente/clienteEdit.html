@@ -1,0 +1,14 @@
+﻿<style>
+    span.error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<div>
+    <div ng-cloak>        
+        <h3>Alterar {{$ctrl.cliente.nome}}</h3>        
+    </div>
+
+    <ng-include src="'app/views/cliente/_clienteForm.html'"></ng-include>
+</div>

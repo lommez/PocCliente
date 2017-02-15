@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Poc-Cliente</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/components-font-awesome/css/font-awesome.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header></header>
+
+    <div class="container body-content" style="margin: 50px;">
+        <div ui-view></div>        
+    </div>
+
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/lib/requirejs/require.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        require.config({
+            baseUrl: "/typescript/generated"
+        });
+
+        require(['app'], (app) => {
+            angular.bootstrap(document, ['app']);
+        });
+    </script>
+</body>
+
+</html>

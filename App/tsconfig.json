@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es6",
+    "baseUrl": ".",
+    "outDir": "wwwroot/typescript/generated"
+  },
+  "include": [
+      "wwwroot/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "wwwroot/lib/typescript-dotnet-amd/**/*"
+  ]
+}
