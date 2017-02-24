@@ -30,31 +30,11 @@ app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 const api = require('./routes');
 app.use('/api', api);
 
-// Catch all other routes and return the index file
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'index.html'));
-// });
-
-app.get('*', function (req, res) {
-    var stripped = req.url.split('.')[0];
-    
+app.get('*', (req, res) => {
     if (req.url === '/index' || req.url === '/') {
         res.render('index', function (err, html) {
             if (err) {
-                res.render('404');
-            } else {
-                res.send(html);
-            }
-        });
-    } else {
-        var index = stripped.indexOf('/', stripped);
-        if (index >= 0) {
-            stripped = stripped.slice(index + 1, stripped.length);
-        }
-
-        res.render(stripped, function (err, html) {
-            if (err) {
-                res.render('404');
+                console.log(err);
             } else {
                 res.send(html);
             }

@@ -1,0 +1,50 @@
+﻿<div>
+    <div ng-cloak>
+        <h3>{{tituloPessoaDetails}} de {{pessoa.nome}}</h3>
+    </div>
+    <hr/>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{pessoa.nome}}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de pessoa</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{findWithAttr(tipoPessoa, 'valor', pessoa.tipoPessoa).descricao}}" class="form-control"/>
+            </div>
+        </div>
+        <div ng-if="pessoa.tipoPessoa == 'fisica'" class="form-group">
+            <label class="control-label col-md-2">Cpf</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{pessoa.documento | cpf}}" class="form-control"/>
+            </div>
+        </div>
+        <div ng-if="pessoa.tipoPessoa == 'juridica'" class="form-group">
+            <label class="control-label col-md-2">Cnpj</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{pessoa.documento | cnpj}}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">E-mail</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{pessoa.email}}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a ng-href="#/alterar/{{pessoa.id}}" class="btn btn-primary">Alterar</a>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div>
+                    <a ui-sref="clientes.list">Voltar para lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
