@@ -5,9 +5,7 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
-    "baseUrl": ".",
-    "outDir": "wwwroot/typescript/generated",
+    "target": "es6",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
