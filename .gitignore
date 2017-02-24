@@ -5,10 +5,12 @@ target/
 *.suo
 *.cache
 *.bak
+*.log
 .vs/
 packages/
 msbuild.log
 _Resharper*/
 node_modules/
 generated/
+*/typescript/generated/
 */wwwroot/lib/
