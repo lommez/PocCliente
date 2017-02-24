@@ -11,4 +11,4 @@ msbuild.log
 _Resharper*/
 node_modules/
 generated/
-/app/wwwroot/lib/
+*/wwwroot/lib/
