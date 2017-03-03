@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { RequestOptionsArgs, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ClienteDto } from '../dtos/clienteDto';
 import { UtilsService } from '../services/utils.service';
@@ -18,7 +18,6 @@ export class ClienteService {
     getList(): Observable<Array<ClienteDto>> {
         return this._http.get(Constants.serverUrl + 'api/cliente/getList')
             .map((response: Response) => <ClienteDto[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
@@ -29,19 +28,23 @@ export class ClienteService {
         return Observable.throw(error.json().error || 'Server error');
     }
 
-    // getClienteById(id: string): ng.IPromise<ClienteDto> {
-    //     var deferred = this.$q.defer();
+    getClienteById(id: string): Observable<ClienteDto> {
+        return this._http.get(Constants.serverUrl + 'api/cliente/getById/?id=' + id)
+            .map((response: Response) => <ClienteDto>response.json())
+            .catch(this.handleError);
+    };
 
-    //     this.$http.get<ClienteDto>(Constants.serverUrl + 'api/cliente/getById?id=' + id)
-    //         .then((result) => {
-    //             deferred.resolve(result.data);
-    //         })
-    //         .catch((error) => {
-    //             deferred.reject(error);
-    //         });
+    remove(id: string): Observable<boolean> {
+        let options: RequestOptionsArgs = {
+            body : {
+                id: id
+            }
+        };
 
-    //     return deferred.promise;
-    // };
+        return this._http.delete(Constants.serverUrl + 'api/cliente/delete', options)
+            .map((response: Response) => <boolean>response.json())
+            .catch(this.handleError);
+    }
 
     // remove(id: string): ng.IPromise<boolean> {
     //     var deferred = this.$q.defer();

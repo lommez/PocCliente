@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(favicon(__dirname + '/wwwroot/favicon.png'));
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.set('views', __dirname + '/wwwroot/app');
 app.set('view engine', 'html');
 
