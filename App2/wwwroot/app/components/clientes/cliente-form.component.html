@@ -1,0 +1,106 @@
+<button (click)="teste()">Teste</button>
+<form class="form-horizontal" name="clienteForm" novalidate *ngIf="cliente" #clienteForm="ngForm">
+    <hr />
+    <div class="form-body">
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome</label>
+            <div class="col-md-10">
+                <input type="text" name="nome" placeholder="Digite o nome" class="form-control" [(ngModel)]="cliente.nome" required #name="ngModel" #name="ngModel"/>
+                <!--<span class="error" [hidden]="!nome.dirty && nome.errors.required">Nome é obrigatório</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de Pessoa</label>
+            <div class="col-md-10">
+                <select [(ngModel)]="cliente.tipoPessoa" name="tipoPessoa" class="form-control" required>
+                    <option *ngFor="let tipoPessoa of tipoPessoaOptions" [ngValue]="tipoPessoa.key">{{tipoPessoa.value}}</option>
+                </select>
+                <!--<span class="error" [hidden]="!tipoPessoa.dirty && tipoPessoa.errors.required">Tipo de pessoa é obrigatório</span>-->
+            </div>
+        </div>
+        <!--<div *ngIf="cliente.tipoPessoa == '1'" class="form-group">
+            <label class="control-label col-md-2">Cpf</label>
+            <div class="col-md-10">
+                <input [(ngModel)]="cliente.documento" type="text" name="cpf" placeholder="Digite o cpf" class="form-control" maxlength="11"
+                    required [maxlength]="11" [minlength]="11" />
+                <span class="error" [hidden]="!cpf.dirty && cpf.errors.required">Cpf é obrigatório</span>
+                <span class="error" [hidden]="!cpf.dirty && cpf.errors.minlength || cpf.errors.maxlength">Tamanho inválido</span>
+            </div>
+        </div>
+        <div *ngIf="cliente.tipoPessoa == '2'" class="form-group">
+            <label class="control-label col-md-2">Cnpj</label>
+            <div class="col-md-10">
+                <input [(ngModel)]="cliente.documento" type="text" name="cnpj" placeholder="Digite o cnpj" class="form-control" maxlength="14"
+                    required [minlength]="14" [maxlength]="14" />
+                <span class="error" [hidden]="!cnpj.dirty && cnpj.errors.required">Cnpj é obrigatório</span>
+                <span class="error" [hidden]="!cnpj.dirty && cnpj.errors.minlength || cnpj.errors.maxlength">Tamanho inválido</span>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="control-label col-md-2">E-mail</label>
+            <div class="col-md-10">
+                <input type="email" name="email" placeholder="Digite seu e-mail" class="form-control" [(ngModel)]="cliente.email" required #email="ngModel" validateEmail/>
+                <div *ngIf="email.errors && (email.dirty || email.touched)"
+                    class="alert alert-danger">
+                    <div [hidden]="!email.errors.required">
+                        E-mail é obrigatório
+                    </div>
+                    <div [hidden]="!email.errors.validEmail">
+                        E-mail é inválido
+                    </div>
+                </div>                
+                <!--<span class="error" [hidden]="!email.dirty && !email.errors.required">E-mail é obrigatório</span>
+                <span class="error" [hidden]="!email.dirty && !email.errors.email">E-mail é inválido</span>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Telefones</label>
+            <div class="col-md-10">
+                <div class="table-scrollable">
+                    <table class="table table-hover" *ngIf="cliente && cliente.telefones && cliente.telefones.length">
+                        <thead>
+                            <tr>
+                                <th style="width:10%"></th>
+                                <th style="width:90%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let telefone of cliente.telefones">
+                                <td>
+                                    <button type="button" (click)="deletePhone(telefone)" class="btn btn-sm btn-default">
+                                        <i class="fa-trash-o"></i>
+                                    </button>
+                                </td>
+                                <td>{{telefone}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" (click)="addPhone()" class="btn btn-sm green" [disabled]="novoTelefone == undefined || novoTelefone == ''">
+                                        <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                </td>
+                                <td><input type="text" name="numero" [(ngModel)]="novoTelefone" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary" [disabled]="clienteForm.$invalid">Salvar</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div>
+                    <a [routerLink]="['/clientes']">Voltar para lista</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            ClienteForm: {{clienteForm.valid}}
+            Email: {{clienteForm.controls.email}}
+        </div>
+    </div>
+</form>

@@ -1,0 +1,63 @@
+<div>
+    <div>
+        <h3>Clientes</h3>
+    </div>
+
+    <a [routerLink]="['/clientes/novo']">Cadastrar Novo Cliente</a>
+
+    <div class="table-responsive">
+        <table class="table col-sm-12 table-striped" *ngIf="clientesList && clientesList.length">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo de Pessoa</th>
+                    <th>Documento</th>
+                    <th>E-mail</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientesList">
+                    <!--nome-->
+                    <td>
+                        <a [routerLink]="['/clientes/alterar', cliente.id]">{{cliente.nome}}</a>
+                    </td>
+                    <!--tipo de pessoa-->
+                    <td>
+                        <div *ngIf="cliente.tipoPessoa == 1">
+                            Física
+                        </div>
+                        <div *ngIf="cliente.tipoPessoa == 2">
+                            Jurídica
+                        </div>
+                    </td>
+                    <!--documento-->
+                    <td *ngIf="cliente.tipoPessoa == 1">
+                        {{cliente.documento | cpf}}
+                    </td>
+                    <td *ngIf="cliente.tipoPessoa == 2">
+                        {{cliente.documento | cnpj}}
+                    </td>
+                    <!--e-mail-->
+                    <td>
+                        <a [href]="'mailto:' + cliente.email">{{cliente.email}}</a>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span>
+                            <a class="btn btn-sm btn-primary" [routerLink]="['/clientes/alterar', cliente.id]">
+                                Alterar
+                            </a>
+                        </span>
+                        <span>
+                            <a class="btn btn-sm btn-danger" [routerLink]="['/clientes/excluir', cliente.id]">
+                                Excluir
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
