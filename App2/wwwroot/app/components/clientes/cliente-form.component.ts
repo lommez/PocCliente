@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UtilsService } from '../../services/utils.service';
@@ -12,7 +13,7 @@ export class ClienteFormComponent implements OnInit, AfterViewInit {
     cliente: ClienteDto;
     errorMessage: string;
     tipoPessoaOptions: Array<any>;
-    @ViewChild('clienteForm') form;
+    @ViewChild('clienteForm') form: NgForm;
 
     constructor(private route: ActivatedRoute, private clienteService: ClienteService, private utilsService: UtilsService) {
     }
@@ -25,14 +26,14 @@ export class ClienteFormComponent implements OnInit, AfterViewInit {
             .getClienteById(id)
             .subscribe((cliente: ClienteDto) => {
                 if (cliente) {
-                    this.cliente = cliente;                    
+                    this.cliente = cliente;
                 }
             }, (error) => {
                 this.errorMessage = error;
-            });        
+            });
     }
-    
-    ngAfterViewInit(){
+
+    ngAfterViewInit() {
         console.log(this.form);
     }
 
@@ -61,7 +62,8 @@ export class ClienteFormComponent implements OnInit, AfterViewInit {
 
     }
 
-    teste(){
-        console.log(this.form);
+    teste() {
+        let emailControl = this.form.controls['email'];
+        console.log(emailControl);
     }
 }

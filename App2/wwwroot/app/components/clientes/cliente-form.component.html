@@ -5,24 +5,34 @@
         <div class="form-group">
             <label class="control-label col-md-2">Nome</label>
             <div class="col-md-10">
-                <input type="text" name="nome" placeholder="Digite o nome" class="form-control" [(ngModel)]="cliente.nome" required #name="ngModel" #name="ngModel"/>
-                <!--<span class="error" [hidden]="!nome.dirty && nome.errors.required">Nome é obrigatório</span>-->
+                <input type="text" name="nome" placeholder="Digite o nome" class="form-control" [(ngModel)]="cliente.nome" required #nome="ngModel" #name="ngModel"/>
+                <div *ngIf="nome.errors && (nome.dirty || nome.touched)"
+                    class="alert alert-danger">
+                    <div [hidden]="!nome.errors.required">
+                        Nome é obrigatório
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Tipo de Pessoa</label>
             <div class="col-md-10">
-                <select [(ngModel)]="cliente.tipoPessoa" name="tipoPessoa" class="form-control" required>
+                <select [(ngModel)]="cliente.tipoPessoa" name="tipoPessoa" class="form-control" required #tipoPessoa="ngModel">
                     <option *ngFor="let tipoPessoa of tipoPessoaOptions" [ngValue]="tipoPessoa.key">{{tipoPessoa.value}}</option>
                 </select>
-                <!--<span class="error" [hidden]="!tipoPessoa.dirty && tipoPessoa.errors.required">Tipo de pessoa é obrigatório</span>-->
+                <div *ngIf="tipoPessoa.errors && (tipoPessoa.dirty || tipoPessoa.touched)"
+                    class="alert alert-danger">
+                    <div [hidden]="!tipoPessoa.errors.required">
+                        Tipo de pessoa é obrigatório
+                    </div>
+                </div>
             </div>
         </div>
         <!--<div *ngIf="cliente.tipoPessoa == '1'" class="form-group">
             <label class="control-label col-md-2">Cpf</label>
             <div class="col-md-10">
                 <input [(ngModel)]="cliente.documento" type="text" name="cpf" placeholder="Digite o cpf" class="form-control" maxlength="11"
-                    required [maxlength]="11" [minlength]="11" />
+                    required [maxlength]="11" [minlength]="11" #cpf="ngModel"/>
                 <span class="error" [hidden]="!cpf.dirty && cpf.errors.required">Cpf é obrigatório</span>
                 <span class="error" [hidden]="!cpf.dirty && cpf.errors.minlength || cpf.errors.maxlength">Tamanho inválido</span>
             </div>
@@ -31,7 +41,7 @@
             <label class="control-label col-md-2">Cnpj</label>
             <div class="col-md-10">
                 <input [(ngModel)]="cliente.documento" type="text" name="cnpj" placeholder="Digite o cnpj" class="form-control" maxlength="14"
-                    required [minlength]="14" [maxlength]="14" />
+                    required [minlength]="14" [maxlength]="14" #cnpj="ngModel"/>
                 <span class="error" [hidden]="!cnpj.dirty && cnpj.errors.required">Cnpj é obrigatório</span>
                 <span class="error" [hidden]="!cnpj.dirty && cnpj.errors.minlength || cnpj.errors.maxlength">Tamanho inválido</span>
             </div>
@@ -45,12 +55,10 @@
                     <div [hidden]="!email.errors.required">
                         E-mail é obrigatório
                     </div>
-                    <div [hidden]="!email.errors.validEmail">
+                    <div [hidden]="!email.errors.emailIsValid">
                         E-mail é inválido
                     </div>
-                </div>                
-                <!--<span class="error" [hidden]="!email.dirty && !email.errors.required">E-mail é obrigatório</span>
-                <span class="error" [hidden]="!email.dirty && !email.errors.email">E-mail é inválido</span>-->
+                </div>
             </div>
         </div>
         <div class="form-group">
