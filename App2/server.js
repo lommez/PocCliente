@@ -7,8 +7,6 @@ var favicon = require('serve-favicon');
 
 var app = module.exports = express();
 
-
-
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -30,17 +28,22 @@ app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 const api = require('./routes');
 app.use('/api', api);
 
-app.get('*', (req, res) => {
-    if (req.url === '/index' || req.url === '/') {
-        res.render('index', function (err, html) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send(html);
-            }
-        });
-    }
+app.all('*', (req, res) => {
+    var index_file = __dirname + '/wwwroot/index.html';
+    res.status(200).sendFile(index_file);
 });
+
+// app.get('*', (req, res) => {
+//     if (req.url === '/index' || req.url === '/') {
+//         res.render('index', function (err, html) {
+//             if (err) {
+//                 console.log(err);
+//             } else {
+//                 res.send(html);
+//             }
+//         });
+//     }
+// });
 
 // servidor
 http
