@@ -10,22 +10,4 @@ import { Component } from '@angular/core';
     `
 })
 export class AppComponent {
-    // this.clienteService.getClienteById('58b9bac89cb4412ce0d240e7')
-    //     .subscribe(cliente =>
-    //         () => {
-    //             if (cliente) {
-    //                 this.cliente = cliente;
-    //                 console.log(cliente);
-    //             }
-    //         },
-    //     error => this.errorMessage = <any>error
-    //     );
-
-    // this.clienteService.remove('58b9bac89cb4412ce0d240e7')
-    //     .subscribe(result =>
-    //         () => {
-    //             console.log(result);
-    //         },
-    //     error => this.errorMessage = <any>error
-    //     );
 }

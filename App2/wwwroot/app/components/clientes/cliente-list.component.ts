@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../services/cliente.service';
-import { ClienteDto } from '../../dtos/clienteDto';
+import { Cliente } from '../../models/cliente.model';
 
 @Component({
     templateUrl: 'app/components/clientes/cliente-list.component.html'
 })
 export class ClienteListComponent implements OnInit {
-    clientesList: Array<ClienteDto>;
+    clientesList: Array<Cliente>;
     errorMessage: string;
 
     constructor(private clienteService: ClienteService) {

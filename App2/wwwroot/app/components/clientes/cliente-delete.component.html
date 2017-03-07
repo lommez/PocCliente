@@ -1,1 +1,52 @@
-Delete
+<div *ngIf="cliente">
+    <h3>Tem certeza que deseja excluir?</h3>
+    <hr/>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-md-2">Nome</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{cliente.nome}}" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de pessoa</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{utilsService.findWithAttr(tipoPessoaOptions, 'key', cliente.tipoPessoa).value}}" class="form-control"
+                />
+            </div>
+        </div>
+        <div *ngIf="cliente.tipoPessoa == '1'" class="form-group">
+            <label class="control-label col-md-2">Cpf</label>
+            <div class="col-md-10">
+                <input readonly value="{{cliente.documento}}" type="text" name="cpf" class="form-control" />
+            </div>
+        </div>
+        <div *ngIf="cliente.tipoPessoa == '2'" class="form-group">
+            <label class="control-label col-md-2">Cnpj</label>
+            <div class="col-md-10">
+                <input readonly value="{{cliente.documento}}" type="text" name="cnpj" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">E-mail</label>
+            <div class="col-md-10">
+                <input type="text" readonly value="{{cliente.email}}" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <form class="form-horizontal" novalidate (ngSubmit)="remove(cliente.id)">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Excluir</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div>
+                    <a [routerLink]="['/clientes']">Voltar para lista</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
