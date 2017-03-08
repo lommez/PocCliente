@@ -13,14 +13,13 @@ import { ClienteCreateComponent } from './components/clientes/cliente-create.com
 import { ClienteEditComponent } from './components/clientes/cliente-edit.component';
 import { ClienteDeleteComponent } from './components/clientes/cliente-delete.component';
 import { ClienteFormComponent } from './components/clientes/cliente-form.component';
+import { ClienteService } from './components/clientes/cliente.service';
 
 import { CpfPipe } from './pipes/cpf.pipe';
 import { CnpjPipe } from './pipes/cnpj.pipe';
 import { CepPipe } from './pipes/cep.pipe';
 
 import { UtilsService } from './services/utils.service';
-import { ClienteService } from './services/cliente.service';
-
 import { EmailValidator } from './directives/emailValidator.directive';
 
 const routes: Routes = [

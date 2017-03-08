@@ -2,8 +2,8 @@ import { ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilsService } from '../../services/utils.service';
-import { ClienteService } from '../../services/cliente.service';
-import { Cliente } from '../../models/cliente.model';
+import { ClienteService } from '../clientes/cliente.service';
+import { Cliente } from '../clientes/cliente.model';
 import { TipoPessoaEnum } from '../../enums/tipoPessoaEnum';
 
 export class ClienteBaseComponent {

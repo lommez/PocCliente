@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RequestOptionsArgs, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Cliente } from '../models/cliente.model';
-import { UtilsService } from '../services/utils.service';
-import { Constants } from '../constants/constants';
+import { Cliente } from './cliente.model';
+import { UtilsService } from '../../services/utils.service';
+import { Constants } from '../../constants/constants';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -35,7 +35,7 @@ export class ClienteService {
     remove(id: string): Observable<boolean> {
         let options: RequestOptionsArgs = {
             body: {
-                id: id
+                id: 'asd'
             }
         };
 
