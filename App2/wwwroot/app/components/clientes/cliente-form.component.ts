@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UtilsService } from '../../services/utils.service';
-import { ClienteService } from '../../services/cliente.service';
 import { ClienteBaseComponent } from './cliente-base.component';
+import { ClienteService } from './cliente.service';
 
 @Component({
     selector: 'cliente-form',

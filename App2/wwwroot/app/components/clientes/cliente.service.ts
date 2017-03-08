@@ -35,7 +35,7 @@ export class ClienteService {
     remove(id: string): Observable<boolean> {
         let options: RequestOptionsArgs = {
             body: {
-                id: 'asd'
+                id: id
             }
         };
 

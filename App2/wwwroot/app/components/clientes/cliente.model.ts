@@ -1,4 +1,4 @@
-import { TipoPessoaEnum } from '../enums/tipoPessoaEnum';
+import { TipoPessoaEnum } from '../../enums/tipoPessoaEnum';
 
 export class Cliente {
     id: string;
